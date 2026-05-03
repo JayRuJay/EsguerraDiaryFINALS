@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
 <header>
 <h1>My College Diary</h1>
 
@@ -21,6 +22,7 @@
 </header>
 
 <main>
+
 <section>
 <h2>Welcome!</h2>
 <p>Hello! I'm John Antonio S. Esguerra, an IT student sharing my college journey.</p>
@@ -28,7 +30,9 @@
 
 <section>
 <h2>Quick Links</h2>
+
 <div class="cards">
+
 <div class="card">
 <h3>About Me</h3>
 <p>Learn who I am and what I’m studying as an IT student.</p>
@@ -46,22 +50,65 @@
 <p>See simple photos and memories from my college journey.</p>
 <a class="btn" href="gallery.html">Open Gallery</a>
 </div>
+
+</div>
+
+</section>
+
+<!-- AUTO LATEST ENTRY -->
+<section>
+<h2>Latest Entry</h2>
+<div class="highlight" id="latestEntry">
+<p>Loading latest entry...</p>
 </div>
 </section>
 
-<section>
-<h2>Latest Entry</h2>
-<div class="highlight">
-<h3>First Year in IT</h3>
-<p>Starting college was exciting and challenging. I’m learning step by step and improving every week.</p>
-<a class="btn" href="diary.html">Read More</a>
-</div>
-</section>
 </main>
 
 <footer>
 <p>© 2026 My College Diary | John Antonio S. Esguerra (IT Student)</p>
 </footer>
+
+<script>
+async function loadLatestEntry(){
+  try{
+    const response = await fetch("diary.html");
+    const html = await response.text();
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    const entries = [...doc.querySelectorAll(".entry")];
+
+    if(entries.length === 0){
+      document.getElementById("latestEntry").innerHTML = "<p>No entries found.</p>";
+      return;
+    }
+
+    // SORT BY data-date
+    entries.sort((a, b) => {
+      return new Date(b.getAttribute("data-date")) - new Date(a.getAttribute("data-date"));
+    });
+
+    const latest = entries[0];
+
+    const title = latest.querySelector(".date")?.innerText || "No date";
+    const text = latest.querySelector(".content p")?.innerText || "No content";
+
+    document.getElementById("latestEntry").innerHTML = `
+      <h3>${title}</h3>
+      <p>${text}</p>
+      <a class="btn" href="diary.html">Read Full Entry</a>
+    `;
+
+  }catch(error){
+    document.getElementById("latestEntry").innerHTML =
+      "<p>⚠️ Cannot load latest entry. Use Live Server or GitHub Pages.</p>";
+  }
+}
+
+loadLatestEntry();
+</script>
 
 </body>
 </html>
