@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>My College Diary</title>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ✅ SEO (IMPORTANT for Google search) -->
+<meta name="description" content="My College Diary by John Antonio S. Esguerra, an IT student sharing college life, experiences, and memories.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="John Antonio S. Esguerra">
+
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -55,7 +62,7 @@
 
 </section>
 
-<!-- AUTO LATEST ENTRY -->
+<!-- ✅ LATEST ENTRY -->
 <section>
 <h2>Latest Entry</h2>
 <div class="highlight" id="latestEntry">
@@ -73,8 +80,13 @@
 async function loadLatestEntry(){
   try{
     const response = await fetch("diary.html");
-    const html = await response.text();
 
+    // ✅ check if fetch worked
+    if(!response.ok){
+      throw new Error("Failed to load diary");
+    }
+
+    const html = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
 
@@ -85,7 +97,7 @@ async function loadLatestEntry(){
       return;
     }
 
-    // SORT BY data-date
+    // ✅ SORT newest first
     entries.sort((a, b) => {
       return new Date(b.getAttribute("data-date")) - new Date(a.getAttribute("data-date"));
     });
@@ -103,7 +115,7 @@ async function loadLatestEntry(){
 
   }catch(error){
     document.getElementById("latestEntry").innerHTML =
-      "<p>⚠️ Cannot load latest entry. Use Live Server or GitHub Pages.</p>";
+      "<p>⚠️ Cannot load latest entry. Make sure you are using GitHub Pages.</p>";
   }
 }
 
