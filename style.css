@@ -1,67 +1,74 @@
 body{
   font-family: Arial, sans-serif;
   margin:0;
-  background-color:#f4f4f4;
+  background-color:#eef2f7; /* softer background */
 }
 
+/* HEADER + FOOTER */
 header{
-  background:#333;
+  background:#1e293b; /* deep blue-gray */
   color:white;
   padding:15px;
   text-align:center;
 }
 
-nav a{
-  color:white;
-  margin:0 10px;
-  text-decoration:none;
-}
-
-nav a:hover{
-  text-decoration:underline;
-}
-
-nav a.active{
-  text-decoration:underline;
-  font-weight:bold;
-}
-
-main{
-  max-width:1000px;
-  margin:auto;
-}
-
-/* SECTION + GALLERY FIX */
-section{
-  padding:20px;
-  background:white;
-  margin:20px;
-  border-radius:5px;
-
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:15px;
-}
-
-/* IMAGE SIZE FIX */
-img{
-  margin:10px;
-  border-radius:5px;
-  max-width:300px;
-  width:100%;
-  height:auto;
-  cursor:zoom-in;
-}
-
 footer{
-  background:#333;
+  background:#1e293b;
   color:white;
   text-align:center;
   padding:12px;
   margin-top:20px;
 }
 
+/* NAV */
+nav a{
+  color:#e2e8f0;
+  margin:0 10px;
+  text-decoration:none;
+  transition:0.2s;
+}
+
+nav a:hover{
+  color:#f97316; /* accent */
+}
+
+nav a.active{
+  color:#f97316;
+  font-weight:bold;
+}
+
+/* MAIN */
+main{
+  max-width:1000px;
+  margin:auto;
+}
+
+/* SECTIONS */
+section{
+  padding:20px;
+  background:white;
+  margin:20px;
+  border-radius:8px;
+
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* IMAGES */
+img{
+  margin:10px;
+  border-radius:6px;
+  max-width:300px;
+  width:100%;
+  height:auto;
+  cursor:zoom-in;
+}
+
+/* CARDS */
 .cards{
   display:flex;
   gap:15px;
@@ -70,8 +77,8 @@ footer{
 
 .card{
   background:white;
-  border:1px solid #ddd;
-  border-radius:8px;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
   padding:15px;
   flex:1;
   min-width:200px;
@@ -80,19 +87,20 @@ footer{
 
 .card:hover{
   transform:translateY(-5px);
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 .card h3{
   margin-top:0;
 }
 
+/* BUTTON */
 .btn{
   display:inline-block;
   margin-top:8px;
   padding:8px 12px;
   border-radius:6px;
-  background:darkorange;
+  background:#f97316;
   color:white;
   text-decoration:none;
   font-weight:bold;
@@ -102,19 +110,20 @@ footer{
 }
 
 .btn:hover{
-  opacity:0.9;
+  background:#ea580c;
 }
 
+/* HIGHLIGHT */
 .highlight{
-  background:whitesmoke;
-  border-left:6px solid darkorange;
+  background:#f9fafb;
+  border-left:6px solid #f97316;
   padding:12px;
   border-radius:6px;
   margin:10px 0;
 }
 
 .muted{
-  color:gray;
+  color:#6b7280;
 }
 
 /* IMAGE MODAL */
@@ -147,7 +156,7 @@ footer{
   position:relative;
   margin:20px 0;
   padding-left:30px;
-  border-left:4px solid darkorange;
+  border-left:4px solid #f97316;
 }
 
 .entry{
@@ -162,21 +171,21 @@ footer{
   top:5px;
   width:15px;
   height:15px;
-  background:darkorange;
+  background:#f97316;
   border-radius:50%;
 }
 
 .date{
   font-weight:bold;
   margin-bottom:5px;
-  color:#333;
+  color:#1e293b;
 }
 
 .content{
   background:white;
   padding:12px;
   border-radius:6px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  box-shadow:0 2px 5px rgba(0,0,0,0.08);
 }
 
 /* PROFILE CARD */
@@ -184,16 +193,8 @@ footer{
   text-align:center;
   background:white;
   padding:25px;
-  border-radius:10px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.profile-card h2{
-  margin-bottom:5px;
-}
-
-.profile-info{
-  margin-top:15px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
 
 .profile-pic{
@@ -202,7 +203,7 @@ footer{
   border-radius:50%;
   object-fit:cover;
   margin-bottom:10px;
-  border:4px solid darkorange;
+  border:4px solid #f97316;
 }
 
 /* SKILLS */
@@ -214,7 +215,7 @@ footer{
 }
 
 .skills span{
-  background:darkorange;
+  background:#f97316;
   color:white;
   padding:6px 12px;
   border-radius:20px;
@@ -228,7 +229,7 @@ footer{
   background:white;
   padding:25px;
   border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
   text-align:center;
 }
 
@@ -242,11 +243,11 @@ footer{
 }
 
 .contact-box a{
-  color:darkorange;
+  color:#f97316;
   text-decoration:none;
   font-weight:bold;
 }
 
 .contact-box a:hover{
-  text-decoration:underline;
+  color:#ea580c;
 }
